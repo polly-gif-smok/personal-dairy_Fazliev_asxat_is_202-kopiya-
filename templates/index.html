@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Мои записи</h2>
+{% if entries %}
+    <div class="entries-list">
+        {% for entry in entries %}
+            <div class="entry-card">
+                <h3>{{ entry.title }}</h3>
+                <p class="date">{{ entry.date }}</p>
+                <div class="entry-actions">
+                    <a href="{{ url_for('detail', entry_id=entry.id) }}" class="btn-read">Читать</a>
+                    <form action="{{ url_for('delete', entry_id=entry.id) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="btn-delete" onclick="return confirm('Вы уверены?')">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="empty-message">Пока нет записей. Создайте первую!</p>
+{% endif %}
+{% endblock %}

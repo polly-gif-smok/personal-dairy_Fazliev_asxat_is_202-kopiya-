@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Новая запись</h2>
+<form method="POST" class="entry-form">
+    <div class="form-group">
+        <label for="title">Заголовок:</label>
+        <input type="text" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+        <label for="content">Текст:</label>
+        <textarea id="content" name="content" rows="10" required></textarea>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn-save">💾 Сохранить</button>
+        <a href="{{ url_for('index') }}" class="btn-cancel">Отмена</a>
+    </div>
+</form>
+{% endblock %}
